@@ -10,6 +10,8 @@ describe('NewsSummaryService', function(){
 
   }));
 
+
+
   it('fetches the news headlines', function(){
 
     httpBackend.expectGET('http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/politics?show-fields=body.json').respond(NewsStory);
@@ -17,7 +19,7 @@ describe('NewsSummaryService', function(){
     NewsSummaryService.getNews().then(function(data) {
       expect(data).toEqual(NewsStory);
     });
-    httpBackend.flush();
+    httpBackend.flush(); // only gets the request when 
   });
 
 });
